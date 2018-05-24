@@ -24,21 +24,22 @@ SortedList.prototype.min = function() {
 };
 SortedList.prototype.average = function() {
   var sum = this.items.reduce(function(a, b) {
-    return a + b;
+    return a + b, 0;
   });
   var avg = sum / this.items.length;
-
-  if (this.items == null) {
-    return new Error("OutOfBounds");
-  } else {
-    return avg;
+  if (this.items.length == 0) {
+    throw "EmptySortedList";
   }
+  return avg;
 };
 SortedList.prototype.sum = function() {
-  var sum = this.items.reduce(function(a, b) {
-    return a + b;
-  });
-  return sum;
+  if (this.items.length == 0) {
+    return new Error("EmptySortedList");
+  } else {
+    this.items.reduce(function(a, b) {
+      return a + b, 0;
+    });
+  }
 };
 
 module.exports = SortedList;

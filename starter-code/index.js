@@ -23,22 +23,18 @@ SortedList.prototype.min = function() {
   return Math.min.apply(null, this.items);
 };
 SortedList.prototype.average = function() {
-  var sum = this.items.reduce(function(a, b) {
-    return a + b, 0;
-  });
-  var avg = sum / this.items.length;
   if (this.items.length == 0) {
-    throw "EmptySortedList";
+    return new Error("EmptySortedList");
   }
-  return avg;
+  return this.items.reduce((a, b) => a + b, 0) / this.items.length;
 };
 SortedList.prototype.sum = function() {
   if (this.items.length == 0) {
     return new Error("EmptySortedList");
   } else {
-    this.items.reduce(function(a, b) {
-      return a + b, 0;
-    });
+    return this.items.reduce(function(a, b) {
+      return a + b;
+    }, 0);
   }
 };
 
